@@ -35,7 +35,7 @@ public class Main {
             System.out.println("\n=== BOOK STORE HOME SCREEN ===");
             System.out.println("1. Show Available Books");
             System.out.println("2. Show Checked Out Books");
-            System.out.println("3. Exit");
+            System.out.println("3. Check in a book");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -57,10 +57,10 @@ public class Main {
 
                 for (int i = 0; i < availableBooks.length; i++) {
 
-                    if (availableBooks[i].getId() == id){
-                        if (availableBooks[i].isCheckedOut() == false){
+                    if (availableBooks[i].getId() == id) {
+                        if (availableBooks[i].isCheckedOut() == false) {
                             availableBooks[i].checkOut(name);
-                            System.out.println("you checked out a book" );
+                            System.out.println("you checked out a book");
                         }
 
                     }
@@ -69,10 +69,10 @@ public class Main {
 
 
             }
-            if (choice == 2){
+            if (choice == 2) {
                 System.out.println("Checked out books");
-                for (int i = 0; i < availableBooks.length; i++){
-                    if (availableBooks[i].isCheckedOut() == true){
+                for (int i = 0; i < availableBooks.length; i++) {
+                    if (availableBooks[i].isCheckedOut() == true) {
                         System.out.println(
                                 "id: " + availableBooks[i].getId() +
                                         "  isbn: " + availableBooks[i].getIsbn() + " title " + availableBooks[i].getTitle() +
@@ -82,8 +82,28 @@ public class Main {
                 }
             }
 
+            if (choice == 3){
+                System.out.println("Check in a book");
+                System.out.println("What is the ID of the book you want to chek in");
+                int id = scanner.nextInt();
+                scanner.nextLine();
+                for (int i = 0; i < availableBooks.length; i++){
+
+                    if (availableBooks[i].getId() == id){
+                        if (availableBooks[i].isCheckedOut() == true){
+                            availableBooks[i].checkIn();
+                            System.out.println("Book checked in");
+                        }
+
+                    }
+                }
+            }
+
 
         }
+
+
+
 
     }
 }
